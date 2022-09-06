@@ -75,6 +75,7 @@ namespace EfficientDynamoDb.Operations.Query
         /// <summary>
         /// An array of item attributes that match the query criteria. Each element in this array consists of an attribute name and the value for that attribute.
         /// </summary>
+        //[DynamoDbProperty("Items", typeof(JsonListHintDdbConverter<>))]
         [DynamoDbProperty("Items", typeof(JsonIReadOnlyListHintDdbConverter<>))]
         public IReadOnlyList<TEntity> Items { get; set; } = null!;
     }

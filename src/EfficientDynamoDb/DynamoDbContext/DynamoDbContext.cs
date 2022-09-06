@@ -43,6 +43,7 @@ namespace EfficientDynamoDb
 
         private async ValueTask<TResult> ReadAsync<TResult>(HttpResponseMessage response, CancellationToken cancellationToken = default) where TResult : class
         {
+            var responseStr = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 
             var expectedCrc = GetExpectedCrc(response);
