@@ -1,0 +1,30 @@
+AttributeDefinitions:
+    - AttributeName: GSI_1_PK
+      AttributeType: S
+    - AttributeName: GSI_1_SK
+      AttributeType: S
+    - AttributeName: PK
+      AttributeType: S
+    - AttributeName: SK
+      AttributeType: S
+GlobalSecondaryIndexes:
+    - IndexName: GSI_1
+      KeySchema:
+          - AttributeName: GSI_1_PK
+            KeyType: HASH
+          - AttributeName: GSI_1_SK
+            KeyType: RANGE
+      Projection:
+          ProjectionType: ALL
+      ProvisionedThroughput:
+          ReadCapacityUnits: 4
+          WriteCapacityUnits: 4
+KeySchema:
+    - AttributeName: PK
+      KeyType: HASH
+    - AttributeName: SK
+      KeyType: RANGE
+ProvisionedThroughput:
+    ReadCapacityUnits: 4
+    WriteCapacityUnits: 4
+TableName: TestTable
